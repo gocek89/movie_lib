@@ -17,7 +17,7 @@ class MovieLibrary:
         self.numbers_ofreplays = 0
 
     def __repr__(self):
-        return f'\n{self.next} / {self.title.capitalize()} {self.subtitle.capitalize()} / {self.publication_date} / {self.type_mov} / {self.numbers_ofreplays} \n'
+        return f'\n{self.next} / {self.title.capitalize()} {self.subtitle} / {self.publication_date} / {self.type_mov} / {self.numbers_ofreplays} \n'
 
     def play_movie(self, step=random.randrange(2, 100)):
         self.numbers_ofreplays += step
@@ -32,7 +32,7 @@ class SeriesLibrary(MovieLibrary):
         self.season_number = season_number
 
     def __repr__(self):
-        return f'\n{self.next} / {self.title.capitalize()} {self.subtitle.capitalize()} / {self.publication_date} / {self.type_mov}  / E{self.episod_number}S{self.season_number} / {self.numbers_ofreplays}\n'
+        return f'\n{self.next} / {self.title.capitalize()} {self.subtitle} / {self.publication_date} / {self.type_mov}  / E{self.episod_number}S{self.season_number} / {self.numbers_ofreplays}\n'
 
     def play_movie(self, step=random.randrange(2, 100)):
         self.numbers_ofreplays += step
@@ -99,7 +99,7 @@ def top_titles():
 
 
 def menu():
-    return ' Menu Programu:\n [1] Uzycie Funkcji która zwraca jedynie filmy\n [2] Uzucie funkcji która zwraca jedynie seriale\n [3] Uzycie funkcji która daje mozliwosc wyszukania filmu bądz serialu po tytule\n [4] Funkcja zwrcajaca top Titles z najwieksza liczba wyswietleń\n [0] Zakonczenie programu'
+    return ' Menu Programu:\n [1] Uzycie Funkcji która zwraca jedynie filmy\n [2] Uzucie funkcji która zwraca jedynie seriale\n [3] Uzycie funkcji która daje mozliwosc wyszukania filmu bądz serialu po tytule\n [4] Funkcja zwrcajaca top Titles z najwieksza liczba wyswietleń\n [5] Wyswietl cała listę filmow oraz seriali [0] Zakonczenie programu'
 
 
 # Content Menager.
@@ -111,11 +111,11 @@ only_series = []
 numbers_of_viev = []
 sorted_numbers_of_viev = []
 sorted_end = []
-loops = 5
+loops = 3
 date = datetime.datetime.today()
 
-
-numbers_of_movie = int(input("Podaj liczbe filmów do wygenerowania\n "))
+print("Biblioteka Filmów")
+numbers_of_movie = int(input("Podaj liczbe filmów do wygenerowania\n"))
 numbers_of_series = int(input("Podaj liczbe seriali do wygenerowania\n"))
 
 for i in range(int(numbers_of_movie)):
@@ -168,10 +168,13 @@ while option != 0:
 
     elif option == 4:
         print(
-            f'Ponizej wyswitlam liste 5 Filmow / Seriali z najwieksza liczba oddworzen {date.strftime("%d-%m-%Y %H:%M")}')
+            f'Ponizej wyswitlam liste 3 Filmow / Seriali z najwieksza liczba oddworzen na dzień {date.strftime("%d-%m-%Y %H:%M")}')
         for i in sorted_end:
             print(i)
         print(menu())
         option = int(input("Wpisz swoj wybor: "))
-
+    elif option == 5:
+        print(library)
+        print(menu())
+        option = int(input("Wpisz swoj wybor: "))
 print("Dziękuje za skorzystanie z programu")
