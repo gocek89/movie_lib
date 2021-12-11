@@ -69,14 +69,14 @@ def get_series():
 
 def search():
     searching_title = input(
-        "Podaj tytuł filmu/serialu który szukasz \n").lower()
-    for searching in library:
-        if searching_title in searching.title or searching.subtitle:
-            return f'Film/Serial {searching_title.capitalize()} znajduje sie w bibliotece'
-        else:
-            raise ValueError(
-                f"Niestety {searching_title.capitalize()} nie ma w naszej Bibliotece")
-
+        "Podaj pierwszy człon tytułu \n").lower()
+    searching_subtitle = input("Podaj drugi człon tytułu\n")
+    for x in library:
+        x.title
+        if x.title == searching_title and x.subtitle == searching_subtitle:
+            return f'Film/Serial {searching_title.capitalize()} {searching_subtitle} znajduje sie w bibliotece'
+    raise ValueError(
+        f"Niestety {searching_title.capitalize()} {searching_subtitle} nie ma w naszej Bibliotece")
 # Generator oddworzeń
 
 
